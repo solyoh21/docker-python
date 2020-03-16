@@ -1,4 +1,4 @@
-ARG BASE_TAG=2019.03
+ARG BASE_TAG=2020.02
 ARG TENSORFLOW_VERSION=2.1.0
 
 FROM gcr.io/kaggle-images/python-tensorflow-whl:${TENSORFLOW_VERSION}-py36-2 as tensorflow_whl
