@@ -1,7 +1,8 @@
 ARG BASE_TAG=staging
 
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04 AS nvidia
-FROM gcr.io/kaggle-images/python-tensorflow-whl:2.1.0-py36-2 as tensorflow_whl
+# TODO(rosbo): Use wheel with Python 3.7 and CUDA 10.1
+FROM gcr.io/kaggle-images/python-tensorflow-whl:2.1.0-py37 as tensorflow_whl
 FROM gcr.io/kaggle-images/python:${BASE_TAG}
 
 ADD clean-layer.sh  /tmp/clean-layer.sh
@@ -98,4 +99,4 @@ RUN pip install pycuda && \
 
 # Re-add TensorBoard Jupyter extension patch
 # b/139212522 re-enable TensorBoard once solution for slowdown is implemented.
-# ADD patches/tensorboard/notebook.py /opt/conda/lib/python3.6/site-packages/tensorboard/notebook.py
+# ADD patches/tensorboard/notebook.py /opt/conda/lib/python3.7/site-packages/tensorboard/notebook.py
